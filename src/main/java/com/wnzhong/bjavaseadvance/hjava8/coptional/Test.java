@@ -18,7 +18,7 @@ public class Test {
         // of 方法通过工厂方法创建 Optional 类
         // 创建对象时传入的参数不能为 null。如果传入参数为 null，则抛出 NullPointerException
         Optional<String> a = Optional.of("a");
-        Optional<String> someNull1 = Optional.of(null);
+        //Optional<String> someNull1 = Optional.of(null);
 
         // Optional.ofNullable()
         // 为指定的值创建一个 Optional，如果指定值为 null，则返回一个空的 Optional
@@ -38,7 +38,7 @@ public class Test {
             Optional empty2 = Optional.ofNullable(null);
             System.out.println(empty2.get());
         } catch (NoSuchElementException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(ex.toString());
         }
 
         // ifPresent()
@@ -51,7 +51,7 @@ public class Test {
         // orElse()
         // 如果 Optional 实例有值则将其返回，否则返回 orElse 方法传入的参数。
         Optional<String> d = Optional.of("d");
-        Optional<String> someNull2 = Optional.of(null);
+        Optional<String> someNull2 = Optional.ofNullable(null);
         System.out.println(someNull2.orElse("There is no value present."));
         System.out.println(d.orElse("There is value."));
 
@@ -59,7 +59,7 @@ public class Test {
         // orElseGet 与 orElse 方法类似，区别在于得到的默认值。
         // orElse 方法将传入的字符串作为默认值， orElseGet方法可以接受 Supplier 接口的实现用来生成默认值
         Optional<String> e = Optional.of("e");
-        Optional<String> someNull3 = Optional.of(null);
+        Optional<String> someNull3 = Optional.ofNullable(null);
         System.out.println(someNull3.orElseGet(() -> "Default value."));
         System.out.println(e.orElseGet(() -> "Default value."));
 
@@ -71,7 +71,14 @@ public class Test {
             Optional<String> empty3 = Optional.of(null);
             empty3.orElseThrow(ValueAbsentException::new);
         } catch (Throwable th) {
-            System.out.println(th.getMessage());
+            System.out.println(th.toString());
+        }
+
+        try {
+            Optional<String> empty4 = Optional.ofNullable(null);
+            empty4.orElseThrow(ValueAbsentException::new);
+        } catch (Throwable th) {
+            System.out.println(th.toString());
         }
 
         // map()
