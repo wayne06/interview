@@ -53,6 +53,7 @@ public class OptionalDemo {
     }
 
     static class ValueAbsentException extends Throwable {
+
         public ValueAbsentException() {
             super();
         }

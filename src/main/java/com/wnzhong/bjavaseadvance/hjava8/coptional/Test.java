@@ -13,6 +13,7 @@ import java.util.Optional;
 public class Test {
 
     public static void main(String[] args) {
+
         // Optional.of()
         // 为非 null 的值创建一个 Optional 对象
         // of 方法通过工厂方法创建 Optional 类
@@ -111,6 +112,7 @@ public class Test {
     }
 
     static class ValueAbsentException extends Throwable {
+
         public ValueAbsentException() {
             super();
         }
@@ -123,6 +125,7 @@ public class Test {
         public String getMessage() {
             return "No value present in the Optional instance.";
         }
+
     }
 
 }
